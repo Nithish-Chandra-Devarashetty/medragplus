@@ -30,8 +30,7 @@ BioMistral-7B"* (Sinha et al., EmergIN 2024, DOI
 8. [Testing and evaluation](#8-testing-and-evaluation)
 9. [Project structure](#9-project-structure)
 10. [Troubleshooting](#10-troubleshooting)
-11. [Limitations and future work](#11-limitations-and-future-work)
-12. [Credits](#12-credits)
+11. [Credits](#11-credits)
 
 ---
 
@@ -407,29 +406,9 @@ Not in the repository (created by the setup steps): `models/`, `data/`, `.venv/`
 | Very slow answers | Expected on CPU. Reduce `TOP_K` / `LLM_MAX_TOKENS`, or run on a machine with an NVIDIA GPU |
 | Hugging Face "symlinks" warning on Windows | Harmless. Hide it with `HF_HUB_DISABLE_SYMLINKS_WARNING=1` |
 
-## 11. Limitations and future work
+## 11. Credits
 
-**Current limitations**
-
-* **Latency:** 30–60 s per answer on CPU. The proposal's sub-5-second target needs a GPU.
-* **Telugu voice:** Whisper large-v3-turbo still misspells some Telugu words. Telugu-fine-tuned Whisper models exist (e.g. `vasista22/whisper-telugu-large-v2`) and are more accurate but 2–3× slower on CPU.
-* **Strictness:** the safety layer escalates many safe questions, because BioMistral often adds facts not in the sources.
-* **Unreviewed rules and text:** the rule-based triage and the Hindi/Telugu safety text need clinical and native-speaker review.
-
-**Planned extensions**
-
-* GPU deployment
-* a trained triage classifier (the `TriageClassifier` interface is ready)
-* larger NLLB (1.3B)
-* StatPearls in the knowledge base
-* FHIR/EHR integration
-* multimodal input (images, vitals)
-* automatic knowledge refresh from WHO/CDC
-* comparison with other medical LLMs (Meditron, Med-Gemma)
-
-## 12. Credits
-
-**Team 10, AI in Healthcare**
+**Team**
 
 * A. Rikin
 * Ch. Vaibhav Reddy
