@@ -1,0 +1,173 @@
+# Emergency (red-flag) symptom rules used by backend/safety/emergency.py.
+#
+# A rule fires when ANY entry of `patterns` matches, or when EVERY group in
+# `all_of` has at least one matching pattern. Patterns are case-insensitive
+# Python regular expressions. They are matched against both the English
+# (translated) query and the original query, so Hindi / Telugu keywords are
+# listed directly as a safety net in case machine translation drops a symptom.
+#
+# `message` selects the escalation text in messages.yaml (default: emergency).
+#
+# IMPORTANT: this list is an engineering starting point, not a validated clinical
+# instrument. It must be reviewed by a clinician (and the Hindi / Telugu terms by
+# native speakers) before any real-world use.
+
+rules:
+  - id: chest_pain
+    label: Chest pain or pressure
+    patterns:
+      - 'chest (pain|tightness|pressure|discomfort|heaviness)'
+      - 'pain (in|on|across) (my|the|his|her) chest'
+      - 'crushing (pain|feeling)'
+      - 'heart attack'
+      - 'सीने में (दर्द|जकड़न|भारीपन)'
+      - 'छाती में (दर्द|जकड़न|भारीपन)'
+      - 'ఛాతీ ?(లో)? ?(నొప్పి|బరువు)'
+      - 'గుండె ?(లో)? ?నొప్పి'
+
+  - id: breathing_difficulty
+    label: Difficulty breathing
+    patterns:
+      - '(difficulty|trouble|struggling|hard|problem) (in |with )?breathing'
+      - 'short(ness)? of breath'
+      - "(can ?not|can't|cannot|unable to) (breathe|catch (my|his|her) breath)"
+      - 'breathless'
+      - 'gasping'
+      - 'choking'
+      - 'सांस (लेने में )?(तकलीफ|दिक्कत|परेशानी)'
+      - 'सांस (नहीं आ|फूल)'
+      - 'ఊపిరి (ఆడటం లేదు|ఆడట్లేదు|తీసుకోవడం కష్టం|అందడం లేదు)'
+      - 'శ్వాస ?(తీసుకోవడంలో|ఆడటంలో)? ?(ఇబ్బంది|కష్టం)'
+
+  - id: stroke_signs
+    label: Possible stroke
+    patterns:
+      - 'face (is )?(drooping|droops|droop)'
+      - 'slurred speech'
+      - '(sudden )?(weakness|numbness|paralysis) (on|in|of) one side'
+      - 'one side of (my|the|his|her) (body|face)'
+      - '\bstroke\b'
+      - 'लकवा'
+      - 'పక్షవాతం'
+
+  - id: severe_headache_with_neuro_signs
+    label: Severe headache with neurological or visual symptoms
+    all_of:
+      - - '(severe|worst|sudden|thunderclap|intense|excruciating|unbearable) headache'
+        - 'headache.{0,30}(severe|worst|unbearable|sudden)'
+        - 'तेज सिरदर्द'
+        - 'तेज़ सिरदर्द'
+        - 'తీవ్రమైన తలనొప్పి'
+      - - 'blurr(ed|y) vision'
+        - '(vision|sight) (loss|problems?)'
+        - 'loss of (vision|sight)'
+        - 'double vision'
+        - 'confus'
+        - 'stiff neck'
+        - 'neck stiffness'
+        - 'faint'
+        - 'seizure'
+        - 'weakness'
+        - 'numbness'
+        - 'slurred'
+        - 'धुंधला'
+        - 'మసకగా'
+
+  - id: unconscious
+    label: Loss of consciousness
+    patterns:
+      - 'unconscious'
+      - 'unresponsive'
+      - 'passed out'
+      - 'not waking up'
+      - 'collapsed'
+      - 'बेहोश'
+      - 'స్పృహ (కోల్పోయ|తప్పి|లేదు)'
+
+  - id: seizure
+    label: Seizure
+    patterns:
+      - 'seizure'
+      - 'convulsion'
+      - 'दौरा पड़'
+      - 'మూర్ఛ'
+      - 'ఫిట్స్'
+
+  - id: severe_bleeding
+    label: Severe bleeding
+    patterns:
+      - '(heavy|severe|uncontrolled|profuse) bleeding'
+      - "bleeding (won't|will not|does not|doesn't|is not|isn't) stop"
+      - 'vomiting blood'
+      - '(coughing|cough) (up )?blood'
+      - 'blood in (my |the )?vomit'
+      - 'खून की उल्टी'
+      - 'బాగా రక్తస్రావం'
+      - 'రక్తం ?(వాంతి|కక్కు)'
+
+  - id: anaphylaxis
+    label: Severe allergic reaction
+    patterns:
+      - 'anaphyla'
+      - '(throat|tongue|lips?|face) (is |are )?(swelling|swollen|closing)'
+      - 'swelling (of|in) (my |the )?(throat|tongue|lips|face)'
+      - 'allergic reaction.{0,40}(breath|throat|swell)'
+
+  - id: cyanosis
+    label: Blue lips or skin
+    patterns:
+      - '(lips|face|skin|fingers) (are |is )?(turning |turned )?blue'
+      - 'bluish (lips|skin)'
+
+  - id: poisoning_overdose
+    label: Poisoning, overdose or snake bite
+    patterns:
+      - 'overdose'
+      - 'poison'
+      - 'swallowed (bleach|acid|chemical|pesticide|kerosene|too many)'
+      - 'snake ?bite'
+      - 'bitten by a snake'
+      - 'ज़हर'
+      - 'जहर'
+      - 'सांप (ने )?काट'
+      - 'విషం'
+      - 'పాము (కాటు|కరిచ)'
+
+  - id: pregnancy_bleeding
+    label: Bleeding or severe pain in pregnancy
+    all_of:
+      - ['pregnan', 'गर्भवती', 'गर्भावस्था', 'గర్భవతి', 'గర్భం']
+      - ['bleeding', 'severe (pain|cramp)', 'water broke', 'खून', 'రక్తస్రావం']
+
+  - id: infant_danger_signs
+    label: Danger signs in an infant
+    all_of:
+      - ['\bbaby\b', 'infant', 'newborn', 'month[- ]old']
+      - ['fever', 'not feeding', 'not drinking', 'limp', 'floppy', 'turning blue', 'convulsion', 'seizure']
+
+  - id: head_injury_danger_signs
+    label: Head injury with danger signs
+    all_of:
+      - ['head (injury|trauma)', 'hit (my|his|her|their) head', 'fell on (my|his|her|their) head', 'head injury']
+      - ['vomit', 'confus', 'unconscious', 'drowsy', 'bleeding', 'seizure', 'clear fluid']
+
+  - id: self_harm
+    label: Suicidal thoughts or self-harm
+    message: mental_health_crisis
+    patterns:
+      - 'suicid'
+      - 'kill (myself|me)'
+      - 'end (my|it all|my own) life'
+      - 'want to die'
+      - 'self[- ]harm'
+      - 'hurt(ing)? myself'
+      - 'आत्महत्या'
+      - 'मरना चाहत'
+      - 'ఆత్మహత్య'
+      - 'చనిపోవాలని'
+
+# Words that, when they appear shortly before a match in the same clause, cancel
+# it ("I do NOT have chest pain"). Only applied when EMERGENCY_NEGATION=true.
+negation:
+  window_words: 4
+  terms: ['no', 'not', "don't", 'dont', "doesn't", "didn't", 'without', 'never', 'denies', 'nor', 'none']

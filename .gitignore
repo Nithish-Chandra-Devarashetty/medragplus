@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+models/
+data/qdrant/
+data/raw/
+data/audio/
+data/medical_documents/
+eval/results/
+frontend/node_modules/
+frontend/dist/

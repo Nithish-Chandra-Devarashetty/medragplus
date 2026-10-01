@@ -1,0 +1,35 @@
+# Fixed, pre-translated safety messages. Escalation text is deliberately NOT
+# machine-translated at runtime so that critical advice is never garbled.
+# The Hindi and Telugu strings must be reviewed by native speakers before use.
+# Emergency numbers are for India (108 ambulance, 112 national emergency,
+# 14416 Tele-MANAS mental-health helpline); change them for other regions.
+
+disclaimer:
+  en: "MedRAG+ offers triage guidance, not a medical diagnosis."
+  hi: "MedRAG+ केवल प्रारंभिक मार्गदर्शन देता है, यह चिकित्सीय निदान नहीं है।"
+  te: "MedRAG+ ప్రాథమిక మార్గదర్శనం మాత్రమే ఇస్తుంది, ఇది వైద్య నిర్ధారణ కాదు."
+
+escalation:
+  emergency:
+    en: "Your symptoms may need urgent medical attention. Please seek emergency care immediately: call 108 or 112, or go to the nearest emergency department. Do not wait to see if the symptoms get worse."
+    hi: "आपके लक्षणों के लिए तुरंत चिकित्सा सहायता की आवश्यकता हो सकती है। कृपया तुरंत आपातकालीन सहायता लें: 108 या 112 पर कॉल करें, या नज़दीकी आपातकालीन विभाग में जाएँ। लक्षणों के बिगड़ने का इंतज़ार न करें।"
+    te: "మీ లక్షణాలకు తక్షణ వైద్య సహాయం అవసరం కావచ్చు. దయచేసి వెంటనే అత్యవసర సహాయం పొందండి: 108 లేదా 112కు కాల్ చేయండి, లేదా దగ్గరలోని అత్యవసర విభాగానికి వెళ్లండి. లక్షణాలు తీవ్రమయ్యే వరకు వేచి ఉండకండి."
+  mental_health_crisis:
+    en: "I'm really sorry you are going through this. You deserve support right now. Please call the Tele-MANAS helpline at 14416 (free, 24x7) or 112 if you are in immediate danger, and reach out to someone you trust."
+    hi: "मुझे बहुत दुख है कि आप इससे गुज़र रहे हैं। आपको अभी सहायता मिलनी चाहिए। कृपया टेली-मानस हेल्पलाइन 14416 (निःशुल्क, 24x7) पर कॉल करें, या तत्काल खतरे में होने पर 112 पर कॉल करें, और किसी भरोसेमंद व्यक्ति से बात करें।"
+    te: "మీరు ఇలాంటి పరిస్థితిని ఎదుర్కొంటున్నందుకు నాకు చాలా బాధగా ఉంది. మీకు ఇప్పుడే సహాయం అందాలి. దయచేసి టెలి-మానస్ హెల్ప్‌లైన్ 14416 (ఉచితం, 24x7)కు కాల్ చేయండి, లేదా తక్షణ ప్రమాదంలో ఉంటే 112కు కాల్ చేయండి, మరియు మీరు నమ్మే వారితో మాట్లాడండి."
+  low_confidence:
+    en: "I cannot give a sufficiently reliable answer from the medical information available to me. Please consult a qualified doctor or healthcare professional about this."
+    hi: "मेरे पास उपलब्ध चिकित्सा जानकारी के आधार पर मैं पर्याप्त रूप से विश्वसनीय उत्तर नहीं दे सकता। कृपया इसके बारे में किसी योग्य डॉक्टर या स्वास्थ्य विशेषज्ञ से परामर्श करें।"
+    te: "నా వద్ద ఉన్న వైద్య సమాచారం ఆధారంగా నేను తగినంత నమ్మదగిన సమాధానం ఇవ్వలేను. దయచేసి దీని గురించి అర్హత కలిగిన వైద్యుడిని లేదా ఆరోగ్య నిపుణుడిని సంప్రదించండి."
+  no_context:
+    en: "I could not find information about this in my trusted medical references, so I cannot answer it reliably. Please consult a qualified doctor or healthcare professional."
+    hi: "मुझे अपने विश्वसनीय चिकित्सा संदर्भों में इसके बारे में जानकारी नहीं मिली, इसलिए मैं इसका विश्वसनीय उत्तर नहीं दे सकता। कृपया किसी योग्य डॉक्टर या स्वास्थ्य विशेषज्ञ से परामर्श करें।"
+    te: "నా నమ్మదగిన వైద్య సూచనలలో దీని గురించి సమాచారం దొరకలేదు, కాబట్టి నేను నమ్మదగిన సమాధానం ఇవ్వలేను. దయచేసి అర్హత కలిగిన వైద్యుడిని లేదా ఆరోగ్య నిపుణుడిని సంప్రదించండి."
+  hallucination:
+    en: "I could not verify my answer against trusted medical references, so I will not share it. Please consult a qualified doctor or healthcare professional."
+    hi: "मैं अपने उत्तर की पुष्टि विश्वसनीय चिकित्सा संदर्भों से नहीं कर सका, इसलिए मैं उसे साझा नहीं करूँगा। कृपया किसी योग्य डॉक्टर या स्वास्थ्य विशेषज्ञ से परामर्श करें।"
+    te: "నా సమాధానాన్ని నమ్మదగిన వైద్య సూచనలతో నిర్ధారించలేకపోయాను, కాబట్టి దానిని పంచుకోవడం లేదు. దయచేసి అర్హత కలిగిన వైద్యుడిని లేదా ఆరోగ్య నిపుణుడిని సంప్రదించండి."
+
+# Appended (in English, before translation) when unsupported sentences are removed.
+rewrite_note: "Some statements were removed because they could not be verified against the medical references."

@@ -1,0 +1,10 @@
+[project]
+name = "medrag-plus"
+version = "0.1.0"
+description = "Multilingual, safety-guarded RAG triage assistant built on BioMistral-7B"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"

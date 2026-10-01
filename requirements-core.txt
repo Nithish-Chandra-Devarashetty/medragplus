@@ -1,0 +1,13 @@
+# Core web/RAG/safety dependencies (enough to run the test-suite with fake model backends)
+flask>=3.0
+flask-cors>=4.0
+pymongo>=4.6
+mongomock>=4.1
+PyJWT>=2.8
+qdrant-client>=1.12
+python-dotenv>=1.0
+PyYAML>=6.0
+numpy>=1.26
+pypdf>=4.0
+requests>=2.31
+pytest>=8.0

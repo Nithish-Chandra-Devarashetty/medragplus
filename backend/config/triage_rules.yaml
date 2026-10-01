@@ -1,0 +1,59 @@
+# Non-emergency triage rules used by backend/safety/triage.py.
+#
+# Emergency is decided by red_flags.yaml. These rules split the remaining queries
+# into urgent_care / gp_appointment; anything that matches nothing is self_care.
+# The first level (most severe) with a matching pattern wins. Patterns are
+# case-insensitive regular expressions matched against the English and original
+# query text.
+#
+# IMPORTANT: heuristic starting point only - to be reviewed by a clinician and
+# eventually replaced or supplemented by a trained classifier (see
+# TriageClassifier in triage.py).
+
+levels:
+  urgent_care:
+    - 'high fever'
+    - '(temperature|fever) (of )?(10[3-9]|39\.[5-9]|4[0-2])'
+    - '(blood|bleeding) in (my |the )?(urine|stool|poo|sputum)'
+    - '\b10[3-9] ?(degrees? )?(f\b|fahrenheit|fevers?)'
+    - 'पेशाब में खून'
+    - 'మూత్రంలో రక్తం'
+    - 'severe (abdominal|stomach|belly|back|ear|tooth|eye) pain'
+    - 'severe (vomiting|diarrh)'
+    - "(can't|cannot|unable to) keep (food|fluids|water|anything) down"
+    - 'severe(ly)? dehydrat'
+    - "(i am|i'm|feel|feeling|he is|she is|is) (very )?dehydrated"
+    - '(broken|fractured) (bone|arm|leg|wrist|ankle|finger)'
+    - '(broke|fractured) (my|his|her|their) (arm|leg|wrist|ankle|finger)'
+    - 'deep (cut|wound)'
+    - 'burn.{0,25}(blister|large|deep)'
+    - '(painful|burning) urination.{0,40}fever'
+    - 'fever.{0,40}(painful|burning) urination'
+    - 'allergic reaction'
+    - 'eye (injury|pain)'
+    - '(dog|animal|cat|monkey) bite'
+    - '(dog|animal|cat|monkey) bit (me|him|her|them)'
+    - 'तेज बुखार'
+    - 'तेज़ बुखार'
+    - 'పెద్ద జ్వరం'
+    - 'తీవ్రమైన జ్వరం'
+    - 'ఎక్కువ జ్వరం'
+  gp_appointment:
+    - '(for|since|over) (the )?(past |last )?(\d+|two|three|four|five|six|several|many|a few) (weeks|months|years)'
+    - '(for|since|over) (the )?(past |last )?(3|4|5|6|7|three|four|five|six|seven|several|many) days'
+    - 'persistent'
+    - 'recurr'
+    - 'chronic'
+    - 'keeps coming back'
+    - '\blump\b'
+    - 'unexplained weight (loss|gain)'
+    - '\brash(es)?\b'
+    - 'चकत्ते'
+    - 'దద్దుర్లు'
+    - 'irregular (periods|menstruation)'
+    - 'tired all the time'
+    - 'not getting better'
+    - '(getting|got) worse'
+    - 'हफ्ते से'
+    - 'हफ़्तों से'
+    - 'వారాలుగా'

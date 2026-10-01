@@ -1,0 +1,13 @@
+# Full install: core + model runtimes.
+# llama-cpp-python CPU wheels:  pip install -r requirements.txt --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
+-r requirements-core.txt
+torch>=2.2
+transformers>=4.44
+sentence-transformers>=3.0
+sentencepiece>=0.2
+protobuf>=4.25
+huggingface_hub>=0.24
+faster-whisper>=1.0
+av>=11,<15            # faster-whisper 1.2 passes metadata_errors, removed in PyAV 15+
+gTTS>=2.5
+llama-cpp-python>=0.3.0
